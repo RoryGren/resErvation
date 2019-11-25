@@ -26,9 +26,20 @@ class classRes extends mysqli {
 	}
 	
 	public function findRes() {
-		
+//		TODO ===> Search for reservations
 	}
 	
+	public function addRes($data) {
+//		TODO ===> Add reservation
+	}
+	
+	public function addCustomer($data) {
+//		TODO ===> add customer
+	}
+
+	private function insertRecord($table, $data) {
+		
+	}
 	
 }
 

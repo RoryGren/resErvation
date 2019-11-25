@@ -40,10 +40,35 @@
 		<div class="container-fluid" id="resultList">
 		</div>
 		
+		<!-- Modal -->
+		<div id="modalDetail" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="modal-title">Reserve your Accommodation</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<!--<p class="btn-danger text-center" style="margin-bottom: 0px;">Changes made will be implemented immediately.</p>-->
+					<div class="modal-body" id="modal-body">
+ <!-- TODO ===> Booking form -->
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default btn-success" id="btnSave">Book</button>
+						<button type="button" class="btn btn-default" id="btnCancel" data-dismiss="modal">Cancel</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		
 		<script src="scripts/jquery-3.3.1.min.js" type="text/javascript"></script>
 		<script src="scripts/bootstrap.js" type="text/javascript"></script>
 		<script src="scripts/scripts.js" type="text/javascript"></script>
 		<script>
+//	TODO ===> Prevent start date being earlier than today.
 			var d = new Date();
 			var duration;
 			$(document).ready(function() {
@@ -59,8 +84,16 @@
 				}
 				var diff  = new Date(newEnd - newStart);
 				var days  = diff/1000/60/60/24;
-				$('#duration').val(days);
-				doSearch();
+				if (days < 0) {
+					alert("Cannot check-out before you check-in!\n Please check your dates.");
+					$('#endDate').val(newStart.toLocaleDateString('en-CA'))
+					$('#duration').val('0');
+					$("#endDate").focus();
+				}
+				else if (days > 0) {
+					$('#duration').val(days);
+					doSearch();
+				}
 			})
 			$('#pax').change(function() {
 				if (this.value > 5) {

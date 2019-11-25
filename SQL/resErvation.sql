@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.18)
 # Database: resErvation
-# Generation Time: 2019-11-25 21:38:26 +0000
+# Generation Time: 2019-11-25 23:24:42 +0000
 # ************************************************************
 
 
@@ -200,8 +200,7 @@ CREATE TABLE `Res` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `AssetId` int(11) unsigned NOT NULL,
   `ClientId` int(10) unsigned NOT NULL,
-  `StartDate` date NOT NULL,
-  `EndDate` date NOT NULL,
+  `ReserveDate` date NOT NULL,
   `Comment` blob,
   `CreateDate` date NOT NULL,
   `CreateUser` varchar(10) NOT NULL DEFAULT '',
@@ -210,8 +209,7 @@ CREATE TABLE `Res` (
   PRIMARY KEY (`id`),
   KEY `dxClient` (`ClientId`),
   KEY `dxAsset` (`AssetId`),
-  KEY `dxStart` (`StartDate`),
-  KEY `dxEnd` (`EndDate`),
+  KEY `dxStart` (`ReserveDate`),
   CONSTRAINT `fkResAsset` FOREIGN KEY (`id`) REFERENCES `Asset` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fkResClient` FOREIGN KEY (`ClientId`) REFERENCES `Client` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
