@@ -38,7 +38,7 @@ class classRes extends mysqli {
 	}
 
 	private function insertRecord($table, $data) {
-		
+//		TODO ===> insert data
 	}
 	
 }
