@@ -1,4 +1,3 @@
-classRes
 <?php
 /**
  * Description of classRes
@@ -19,7 +18,6 @@ class classRes extends mysqli {
 	}
 
 	private function fetchAssets() {
-		echo "Fetching Assets";
 		$result = $this->query('SELECT `id`, `Code`, `Description`, `Comment` FROM `Asset`');
 		while ($row = mysqli_fetch_assoc($result)) {
 			$this->AssetList[$row['id']] = $row;

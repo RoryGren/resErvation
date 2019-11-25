@@ -5,9 +5,9 @@ function doSearch() {
 		url: 'assetList.php',
 		data: {
 			start: $("#startDate").val(),
-			end:   $("#endDate").val(),
-			end:   $("#duration").val(),
-			pax:   $("#pax").val(),
+			end: $("#endDate").val(),
+			duration: $("#duration").val(),
+			pax: $("#pax").val(),
 		},
 		success: function(data) {
 			$("#resultList").html(data);

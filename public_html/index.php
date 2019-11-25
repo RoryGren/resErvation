@@ -51,13 +51,13 @@
 				$('#endDate').val(d.toLocaleDateString('en-CA'));
 			})
 			$('input.datePicker').change(function(e) {
-				if (e.target.id === 'startDate') {
-					var newEnd = new Date($('#startDate').val());
-					$('#endDate').val(newEnd.toLocaleDateString('en-CA'));
+				var newStart = new Date($("#startDate").val());
+				var newEnd   = new Date($("#endDate").val());
+				if (e.target.id === 'startDate' && newEnd < newStart) {
+					$('#endDate').val(newStart.toLocaleDateString('en-CA'));
+					newEnd   = new Date($("#endDate").val());
 				}
-				var start = new Date($("#startDate").val());
-				var end   = new Date($("#endDate").val());
-				var diff  = new Date(end - start);
+				var diff  = new Date(newEnd - newStart);
 				var days  = diff/1000/60/60/24;
 				$('#duration').val(days);
 				doSearch();

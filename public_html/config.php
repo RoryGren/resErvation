@@ -1,6 +1,4 @@
-config
 <?php
-
 	/* DB connection details */
 	define('DB_HOST', 'localhost');
 	define('DB_NAME', 'resErvation');
