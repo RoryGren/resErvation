@@ -23,7 +23,7 @@
 								<input type="date" class="form-control datePicker" id="endDate">
 							</div>
 							<div class="col-sm-3">
-								<label for='duration' class='control-label'>Length of stay (days)</label>
+								<label for='duration' class='control-label'>Nights</label>
 								<input type="text" class="form-control" id="duration" placeholder="0">
 							</div>
 						</div>
@@ -52,6 +52,35 @@
 					<!--<p class="btn-danger text-center" style="margin-bottom: 0px;">Changes made will be implemented immediately.</p>-->
 					<div class="modal-body" id="modal-body">
  <!-- TODO ===> Booking form -->
+						<form class="form-horizontal" id="frmBook">
+							<div class="form-group row">
+								<div class="col-sm-6">
+									<label for='FName' class='control-label'>Name</label>
+									<input type="text" class="form-control" id="FName" placeholder="First / Given Name">
+								</div>
+								<div class="col-sm-6">
+									<label for='SName' class='control-label'>Surname</label>
+									<input type="text" class="form-control" id="SName" placeholder="Surname / Family Name">
+								</div>
+<!--							</div>
+							<div class="form-group row">-->
+								<div class="col-sm-6">
+									<label for='Tel' class='control-label'>Telephone</label>
+									<input type="number" class="form-control" id="Tel" placeholder="Telephone">
+								</div>
+								<div class="col-sm-6">
+									<label for='email' class='control-label'>Email</label>
+									<input type="number" class="form-control" id="email" placeholder="xxx@yyyy.com">
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-12">
+									<h4>Booking Confirmation:</h4>
+									<p>Nights:</p>
+									<p>From date To date</p>
+								</div>
+							</div>
+						</form>
 
 					</div>
 					<div class="modal-footer">
