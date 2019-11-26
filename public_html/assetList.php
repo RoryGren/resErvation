@@ -1,4 +1,6 @@
 <?php
+// ===== Builds list of assets for selection =====
+
 	include_once 'config.php';
 	include_once 'classes/classRes.php';
 	$start = filter_input(INPUT_GET, 'start');

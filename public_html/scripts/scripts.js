@@ -1,4 +1,4 @@
-//Javascript
+// ===== Javascript
 
 function doSearch() {
 	let numDays = $("#duration").val();

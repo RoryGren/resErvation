@@ -12,6 +12,7 @@
 				<div class="col col-12">
 					<a href="resFind.php" class="float-right">Search Existing</a>					
 					<h1>ResErvation</h1>
+					
 					<form class="form-horizontal" id="frmRes">
 						<div class="form-group row">
 							<div class="col-sm-3">
@@ -111,19 +112,23 @@
 			
 			$('input.datePicker').change(function(e) {
 				
-				// Make sure check-out date not before check-in date
-				// Calculate number of nights
+				// Todo ===> Make sure check-out date not before check-in date
 				
 				var newStart = new Date($("#startDate").val());
 				var newEnd   = new Date($("#endDate").val());
+				
 				if (e.target.id === 'startDate' && newEnd < newStart) {
 					$('#endDate').val(newStart.toLocaleDateString('en-CA'));
 					newEnd   = new Date($("#endDate").val());
 				}
+				
 				$('#startDay').val($("#startDate").val())
 				$('#endDay').val($("#endDate").val())
 				var diff  = new Date(newEnd - newStart);
 				var days  = diff/1000/60/60/24;
+				
+				// ==== Check-out cannot be earlier than Check-in =====
+				
 				if (days < 0) {
 					alert("Cannot check-out before you check-in!\n Please check your dates.");
 					$('#endDate').val(newStart.toLocaleDateString('en-CA'))
@@ -146,7 +151,9 @@
 			})
 			
 			$('.modal input').on("keyup", function() {
+				
 				// Check required fields are not null then enable Save button
+				// Only validation done by html input type & 'required' attribs
 				if (($("#FName").val() != '') && ($("#SName").val() != '') && ($("#Tel").val() != '') && ($("#email").val() != '')) {
 					$("#btnSave").prop('disabled', false);				}
 				else {

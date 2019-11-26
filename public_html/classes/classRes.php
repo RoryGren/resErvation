@@ -29,7 +29,7 @@ class classRes extends mysqli {
 	}
 	
 	public function getAssetList($start, $end, $duration, $pax) {
-		// TODO ===> Check availability
+		// TODO ===> Check availability with params presented
 		return $this->AssetList;
 	}
 
@@ -56,7 +56,6 @@ class classRes extends mysqli {
 				OR r.`CheckOutDate` LIKE '%$searchString%'";
 		$result = $this->query($sql);
 		$tBody = "";
-		echo "<br>";
 		while ($row = mysqli_fetch_assoc($result)) {
 			$tBody .= "<tr id=" . $row[id] . ">";
 			$tBody .= "<td>" . $row[SName] . "</td>"
@@ -80,9 +79,12 @@ class classRes extends mysqli {
 	public function createReservation($info) {
 		// TODO ===> Check for and prevent double bookings....
 		$this->infoArray = $info;
+		
+		// ===== If new client, add to db and get record id =====
 		if (!$this->clientExists($info)) {
 			$this->currentId = $this->insertRecord("Client", "4,5,6,7");
 		}
+		
 		$numNights   = $info[0]->value;
 		$reserveDate = date_create($info[1]->value);
 		$startDate   = date_create($info[1]->value);

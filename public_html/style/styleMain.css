@@ -1,10 +1,12 @@
 /* 
     Created on : Nov 23, 2019, 2:56:46 PM
     Author     : rory
+	Using Bootstrap 4 styling
 */
 
 html {
 	color: #333;
+	font-size: 1em;
 }
 
 h1 {

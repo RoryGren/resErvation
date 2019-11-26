@@ -1,3 +1,4 @@
+<!-- Search page -->
 <!DOCTYPE html>
 <html>
     <head>
