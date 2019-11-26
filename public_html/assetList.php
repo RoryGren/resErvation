@@ -19,6 +19,5 @@
 		var assetId = e.target.parentElement.id;
 		$(".modal").modal();
 		$("#modal-body").html()
-		alert(assetId);
 	});
 </script>

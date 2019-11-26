@@ -51,41 +51,41 @@
 					</div>
 					<!--<p class="btn-danger text-center" style="margin-bottom: 0px;">Changes made will be implemented immediately.</p>-->
 					<div class="modal-body" id="modal-body">
- <!-- TODO ===> Booking form -->
-						<form class="form-horizontal" id="frmBook">
+ 						<form class="form-horizontal" id="frmBook">
 							<div class="form-group row">
 								<div class="col-sm-6">
 									<label for='FName' class='control-label'>Name</label>
-									<input type="text" class="form-control" id="FName" placeholder="First / Given Name">
+									<input type="text" class="form-control" id="FName" placeholder="First / Given Name" required>
 								</div>
 								<div class="col-sm-6">
 									<label for='SName' class='control-label'>Surname</label>
-									<input type="text" class="form-control" id="SName" placeholder="Surname / Family Name">
+									<input type="text" class="form-control" id="SName" placeholder="Surname / Family Name" required>
 								</div>
-<!--							</div>
-							<div class="form-group row">-->
 								<div class="col-sm-6">
 									<label for='Tel' class='control-label'>Telephone</label>
-									<input type="number" class="form-control" id="Tel" placeholder="Telephone">
+									<input type="number" class="form-control" id="Tel" placeholder="Telephone" required>
 								</div>
 								<div class="col-sm-6">
 									<label for='email' class='control-label'>Email</label>
-									<input type="number" class="form-control" id="email" placeholder="xxx@yyyy.com">
+									<input type="email" class="form-control" id="email" placeholder="xxx@yyyy.com" required>
 								</div>
 							</div>
 							<div class="form-group row">
 								<div class="col-sm-12">
-									<h4>Booking Confirmation:</h4>
-									<p>Nights:</p>
-									<p>From date To date</p>
+									<h5>Confirm booking details</h5>
+									<table>
+										<tr><td>From:</td><td><input type="text" class="borderless" id="startDay" readonly></td></tr>
+										<tr><td>To:</td><td><input type="text" class="borderless" id="endDay" readonly></td></tr>
+										<tr><td>Nights:</td><td><input type="text" class="borderless" id="numDays" readonly></td></tr>
+									</table>
 								</div>
 							</div>
 						</form>
 
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default btn-success" id="btnSave">Book</button>
-						<button type="button" class="btn btn-default" id="btnCancel" data-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-default btn-modal btn-success" id="btnSave" disabled>Book</button>
+						<button type="button" class="btn btn-default btn-modal" id="btnCancel" data-dismiss="modal">Cancel</button>
 					</div>
 				</div>
 
@@ -100,10 +100,12 @@
 //	TODO ===> Prevent start date being earlier than today.
 			var d = new Date();
 			var duration;
+			
 			$(document).ready(function() {
 				$('#startDate').val(d.toLocaleDateString('en-CA'));
 				$('#endDate').val(d.toLocaleDateString('en-CA'));
 			})
+			
 			$('input.datePicker').change(function(e) {
 				var newStart = new Date($("#startDate").val());
 				var newEnd   = new Date($("#endDate").val());
@@ -111,6 +113,8 @@
 					$('#endDate').val(newStart.toLocaleDateString('en-CA'));
 					newEnd   = new Date($("#endDate").val());
 				}
+				$('#startDay').val($("#startDate").val())
+				$('#endDay').val($("#endDate").val())
 				var diff  = new Date(newEnd - newStart);
 				var days  = diff/1000/60/60/24;
 				if (days < 0) {
@@ -121,9 +125,11 @@
 				}
 				else if (days > 0) {
 					$('#duration').val(days);
+					$('#numDays').val(days);
 					doSearch();
 				}
 			})
+			
 			$('#pax').change(function() {
 				if (this.value > 5) {
 					alert("For bulk bookings of more than 5 people, please contact us by phone.");
@@ -131,6 +137,22 @@
 				}
 				doSearch();
 			})
+			
+			$('.modal input').on("keyup", function() {
+				console.log("changed Input");
+				if (($("#FName").val() != '') && ($("#SName").val() != '') && ($("#Tel").val() != '') && ($("#email").val() != '')) {
+					console.log("All filled");
+					$("#btnSave").prop('disabled', false);				}
+				else {
+					console.log("Something IS null");
+					$("#btnSave").prop('disabled', 'disabled');
+				}
+			});
+			
+			$('.btn-modal').on("click", function(e) {
+				alert(e.target.id);
+				console.log($('#frmBook'));
+			});
 		</script>
     </body>
 </html>

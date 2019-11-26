@@ -15,6 +15,19 @@ label {
 	margin-top: 0.3em;
 }
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #DDD;
+  opacity: 0.5; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #DDD;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #DDD;
+}
+
 .assetList {
 	border: thin #BBB solid;
 	margin: 0.3em 0;
@@ -24,4 +37,8 @@ label {
 	background-color: #DDD;
 	color: #000;
 	cursor: pointer;
+}
+
+.borderless {
+	border: 0;
 }

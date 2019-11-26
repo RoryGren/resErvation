@@ -1,1 +1,1 @@
-html{color:#333}h1{text-align:center}label{margin-top:.3em}.assetList{border:thin #BBB solid;margin:.3em 0}.assetList:hover{background-color:#DDD;color:#000;cursor:pointer}
+html{color:#333}h1{text-align:center}label{margin-top:.3em}::placeholder{color:#DDD;opacity:.5}:-ms-input-placeholder{color:#DDD}::-ms-input-placeholder{color:#DDD}.assetList{border:thin #BBB solid;margin:.3em 0}.assetList:hover{background-color:#DDD;color:#000;cursor:pointer}.borderless{border:0}
