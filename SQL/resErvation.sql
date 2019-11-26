@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.18)
 # Database: resErvation
-# Generation Time: 2019-11-25 23:24:42 +0000
+# Generation Time: 2019-11-26 21:14:37 +0000
 # ************************************************************
 
 
@@ -73,7 +73,7 @@ CREATE TABLE `Attribute` (
   PRIMARY KEY (`id`),
   KEY `fkAttribAttribCat` (`AttributeCategoryId`),
   CONSTRAINT `fkAttribAttribCat` FOREIGN KEY (`AttributeCategoryId`) REFERENCES `AttributeCategory` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 
@@ -124,7 +124,7 @@ CREATE TABLE `AttributeValue` (
   KEY `fkAttribValAssetId` (`AssetId`),
   CONSTRAINT `fkAttribValAssetId` FOREIGN KEY (`AssetId`) REFERENCES `Asset` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fkAttribValAttrib` FOREIGN KEY (`AttribId`) REFERENCES `Attribute` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 
@@ -169,7 +169,6 @@ CREATE TABLE `Client` (
   `FName` varchar(50) NOT NULL DEFAULT '',
   `Tel` varchar(25) DEFAULT '',
   `Email` varchar(100) DEFAULT NULL,
-  `ResAddress` varchar(255) DEFAULT NULL,
   `CreateDate` date NOT NULL,
   `CreateUser` varchar(10) NOT NULL DEFAULT '',
   `ModDate` date DEFAULT NULL,
@@ -178,14 +177,16 @@ CREATE TABLE `Client` (
   KEY `dxName` (`SName`),
   KEY `dxFName` (`FName`),
   KEY `dxClientTel` (`Tel`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `Client` WRITE;
 /*!40000 ALTER TABLE `Client` DISABLE KEYS */;
 
-INSERT INTO `Client` (`id`, `SName`, `FName`, `Tel`, `Email`, `ResAddress`, `CreateDate`, `CreateUser`, `ModDate`, `ModUser`)
+INSERT INTO `Client` (`id`, `SName`, `FName`, `Tel`, `Email`, `CreateDate`, `CreateUser`, `ModDate`, `ModUser`)
 VALUES
-	(1,'Smith','Josephine','+2712345678','jo@smith.co.za','Somepalce Else, Another Town, 1234','2019-11-21','R',NULL,NULL);
+	(1,'Smith','Josephine','+2712345678','jo@smith.co.za','2019-11-21','R',NULL,NULL),
+	(2,'Smith','Harry','+2712312312','harry@smith.co.za','2019-11-21','R',NULL,NULL),
+	(3,'Bloggs','Fred','08212345678','fred@bloggs.com','2019-11-26','R',NULL,NULL);
 
 /*!40000 ALTER TABLE `Client` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -200,6 +201,9 @@ CREATE TABLE `Res` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `AssetId` int(11) unsigned NOT NULL,
   `ClientId` int(10) unsigned NOT NULL,
+  `ReservationNumber` int(11) NOT NULL,
+  `CheckInDate` date DEFAULT NULL,
+  `CheckOutDate` date DEFAULT NULL,
   `ReserveDate` date NOT NULL,
   `Comment` blob,
   `CreateDate` date NOT NULL,
@@ -210,10 +214,30 @@ CREATE TABLE `Res` (
   KEY `dxClient` (`ClientId`),
   KEY `dxAsset` (`AssetId`),
   KEY `dxStart` (`ReserveDate`),
-  CONSTRAINT `fkResAsset` FOREIGN KEY (`id`) REFERENCES `Asset` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  KEY `dxResNo` (`ReservationNumber`),
+  CONSTRAINT `fkAsset` FOREIGN KEY (`AssetId`) REFERENCES `Asset` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fkResClient` FOREIGN KEY (`ClientId`) REFERENCES `Client` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
+LOCK TABLES `Res` WRITE;
+/*!40000 ALTER TABLE `Res` DISABLE KEYS */;
+
+INSERT INTO `Res` (`id`, `AssetId`, `ClientId`, `ReservationNumber`, `CheckInDate`, `CheckOutDate`, `ReserveDate`, `Comment`, `CreateDate`, `CreateUser`, `ModDate`, `ModUser`)
+VALUES
+	(1,1,1,44,'2019-11-29','2019-11-30','2019-11-29',X'4E6F20436F6D6D656E74','2019-11-11','R',NULL,NULL),
+	(2,1,1,44,'2019-11-29','2019-11-30','2019-11-30',X'4E6F20436F6D6D656E74','2019-11-11','R',NULL,NULL),
+	(3,1,1,45,'2019-12-30','2020-01-01','2019-12-30',X'4E6F20436F6D6D656E74','2019-11-11','R',NULL,NULL),
+	(4,1,1,45,'2019-12-30','2020-01-01','2019-12-31',X'4E6F20436F6D6D656E74','2019-11-11','R',NULL,NULL),
+	(5,1,1,45,'2019-12-30','2020-01-01','2020-01-01',X'4E6F20436F6D6D656E74','2019-11-11','R',NULL,NULL),
+	(6,1,2,46,'2019-11-28','2019-11-29','2019-11-28',X'4E6F20436F6D6D656E74','2019-11-11','R',NULL,NULL),
+	(7,1,2,46,'2019-11-28','2019-11-29','2019-11-29',NULL,'2019-11-11','R',NULL,NULL),
+	(8,3,3,47,'2019-11-26','2019-11-29','2019-11-26',NULL,'2019-11-26','R',NULL,NULL),
+	(9,3,3,47,'2019-11-26','2019-11-29','2019-11-27',NULL,'2019-11-26','R',NULL,NULL),
+	(10,3,3,47,'2019-11-26','2019-11-29','2019-11-28',NULL,'2019-11-26','R',NULL,NULL),
+	(11,3,3,47,'2019-11-26','2019-11-29','2019-11-29',NULL,'2019-11-26','R',NULL,NULL);
+
+/*!40000 ALTER TABLE `Res` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 
