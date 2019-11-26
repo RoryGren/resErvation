@@ -53,6 +53,22 @@
 					<div class="modal-body" id="modal-body">
  						<form class="form-horizontal" id="frmBook">
 							<div class="form-group row">
+								<div class="col-sm-12">
+									<h5>Booking details</h5>
+									<table>
+										<tr><td>Nights:</td><td><input type="text" class="borderless" id="numDays" readonly></td></tr>
+										<tr><td>Check-in:</td><td><input type="text" class="borderless" id="startDay" readonly></td></tr>
+										<tr><td>Check-out:</td><td><input type="text" class="borderless" id="endDay" readonly></td></tr>
+									</table>
+									<input type="hidden" class="form-control" id="assetId">
+								</div>
+							</div>
+							<div class="form-group row">
+								<span>To finalise, please enter your contact information:</span><br>
+								<div class="col-sm-6">
+									<label for='Tel' class='control-label'>Telephone</label>
+									<input type="number" class="form-control" id="Tel" placeholder="Telephone" required>
+								</div>
 								<div class="col-sm-6">
 									<label for='FName' class='control-label'>Name</label>
 									<input type="text" class="form-control" id="FName" placeholder="First / Given Name" required>
@@ -62,22 +78,8 @@
 									<input type="text" class="form-control" id="SName" placeholder="Surname / Family Name" required>
 								</div>
 								<div class="col-sm-6">
-									<label for='Tel' class='control-label'>Telephone</label>
-									<input type="number" class="form-control" id="Tel" placeholder="Telephone" required>
-								</div>
-								<div class="col-sm-6">
 									<label for='email' class='control-label'>Email</label>
 									<input type="email" class="form-control" id="email" placeholder="xxx@yyyy.com" required>
-								</div>
-							</div>
-							<div class="form-group row">
-								<div class="col-sm-12">
-									<h5>Confirm booking details</h5>
-									<table>
-										<tr><td>From:</td><td><input type="text" class="borderless" id="startDay" readonly></td></tr>
-										<tr><td>To:</td><td><input type="text" class="borderless" id="endDay" readonly></td></tr>
-										<tr><td>Nights:</td><td><input type="text" class="borderless" id="numDays" readonly></td></tr>
-									</table>
 								</div>
 							</div>
 						</form>
@@ -107,6 +109,10 @@
 			})
 			
 			$('input.datePicker').change(function(e) {
+				
+				// Make sure check-out date not before check-in date
+				// Calculate number of nights
+				
 				var newStart = new Date($("#startDate").val());
 				var newEnd   = new Date($("#endDate").val());
 				if (e.target.id === 'startDate' && newEnd < newStart) {
@@ -139,19 +145,18 @@
 			})
 			
 			$('.modal input').on("keyup", function() {
-				console.log("changed Input");
+				// Check required fields are not null then enable Save button
 				if (($("#FName").val() != '') && ($("#SName").val() != '') && ($("#Tel").val() != '') && ($("#email").val() != '')) {
-					console.log("All filled");
 					$("#btnSave").prop('disabled', false);				}
 				else {
-					console.log("Something IS null");
 					$("#btnSave").prop('disabled', 'disabled');
 				}
 			});
 			
 			$('.btn-modal').on("click", function(e) {
-				alert(e.target.id);
-				console.log($('#frmBook'));
+				if (e.target.id === "btnSave") {
+					processBooking($.find("#frmBook :input"));
+				}
 			});
 		</script>
     </body>

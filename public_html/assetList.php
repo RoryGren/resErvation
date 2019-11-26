@@ -6,7 +6,10 @@
 	$duration = filter_input(INPUT_GET, 'duration');
 	$pax = filter_input(INPUT_GET, 'pax');
 	$Res = new classRes();
-	$AssetList = $Res->getAssetList();
+	$AssetList = $Res->getAssetList($start, $end, $duration, $pax);
+?>
+<h6>Available Rooms:</h6>
+<?php
 	foreach ($AssetList as $key => $info) {
 		echo "<div class='row assetList' id='$key'>";
 		echo "<div class='col-3'>" . $info['Description'] . "</div>";
@@ -19,5 +22,6 @@
 		var assetId = e.target.parentElement.id;
 		$(".modal").modal();
 		$("#modal-body").html()
+		$("#assetId").val(assetId);
 	});
 </script>

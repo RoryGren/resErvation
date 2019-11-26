@@ -15,3 +15,20 @@ function doSearch() {
 		}
 	})
 }
+
+function processBooking(bookingFormData) {
+	let bookingArray = [];
+	$.each(bookingFormData, function(i, field) {
+		bookingArray.push({id: field.id, value: field.value});
+	});
+	bookingArray = JSON.stringify(bookingArray);
+	console.log(bookingArray);
+	$.ajax({
+		url : 'processBooking.php',
+		type : 'POST',
+		data : {info : bookingArray},
+		success : function(data) {
+			$("#modal-body").html(data);
+		}
+	})
+}
