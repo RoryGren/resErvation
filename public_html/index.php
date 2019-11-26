@@ -10,8 +10,8 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col col-12">
+					<a href="resFind.php" class="float-right">Search Existing</a>					
 					<h1>ResErvation</h1>
-					<p></p>
 					<form class="form-horizontal" id="frmRes">
 						<div class="form-group row">
 							<div class="col-sm-3">
@@ -37,6 +37,7 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="container-fluid" id="resultList">
 		</div>
 		
@@ -60,7 +61,7 @@
 										<tr><td>Check-in:</td><td><input type="text" class="borderless" id="startDay" readonly></td></tr>
 										<tr><td>Check-out:</td><td><input type="text" class="borderless" id="endDay" readonly></td></tr>
 									</table>
-									<input type="hidden" class="form-control" id="assetId">
+									<input type="hidden" class="form-control" id="AssetId">
 								</div>
 							</div>
 							<div class="form-group row">

@@ -3,7 +3,7 @@
 function doSearch() {
 	let numDays = $("#duration").val();
 	$.ajax({
-		url: 'assetList.php',
+		url: "assetList.php",
 		data: {
 			start: $("#startDate").val(),
 			end: $("#endDate").val(),
@@ -22,13 +22,23 @@ function processBooking(bookingFormData) {
 		bookingArray.push({id: field.id, value: field.value});
 	});
 	bookingArray = JSON.stringify(bookingArray);
-	console.log(bookingArray);
 	$.ajax({
-		url : 'processBooking.php',
-		type : 'POST',
+		url : "processBooking.php",
+		type : "POST",
 		data : {info : bookingArray},
 		success : function(data) {
 			$("#modal-body").html(data);
+		}
+	})
+}
+
+function findRes(searchString) {
+	$.ajax({
+		url : "searchResult.php",
+		type : "GET",
+		data : {searchString : searchString},
+		success : function(data) {
+			$("#tblSearchResult tbody").html(data);
 		}
 	})
 }

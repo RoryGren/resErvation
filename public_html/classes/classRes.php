@@ -8,7 +8,7 @@
  * [0] => stdClass Object ( [id] => numDays  [value] => ) 
  * [1] => stdClass Object ( [id] => startDay [value] => ) 
  * [2] => stdClass Object ( [id] => endDay   [value] => ) 
- * [3] => stdClass Object ( [id] => assetId  [value] => ) 
+ * [3] => stdClass Object ( [id] => AssetId  [value] => ) 
  * [4] => stdClass Object ( [id] => Tel      [value] => ) 
  * [5] => stdClass Object ( [id] => FName    [value] => ) 
  * [6] => stdClass Object ( [id] => SName    [value] => ) 
@@ -29,19 +29,47 @@ class classRes extends mysqli {
 	}
 	
 	public function getAssetList($start, $end, $duration, $pax) {
+		// TODO ===> Check availability
 		return $this->AssetList;
 	}
 
 	private function fetchAssets() {
-		$result = $this->query('SELECT `id`, `Code`, `Description`, `Comment` FROM `Asset`');
+		$result = $this->query("SELECT `id`, `Code`, `Description`, `Comment` FROM `Asset`");
 		while ($row = mysqli_fetch_assoc($result)) {
 			$this->AssetList[$row['id']] = $row;
 		}
 		mysqli_free_result($result);
 	}
 	
-	public function findRes() {
-//		TODO ===> Search for reservations
+	public function findRes($searchString) {
+		$sql = "SELECT DISTINCT c.`id`, c.`SName`, c.`FName`, c.`Tel`, c.`Email`, a.`Description`, r.`ReservationNumber`, r.`CheckInDate`, r.`CheckOutDate` 
+				FROM `Client` c
+				JOIN `Res` r   ON (c.`id` = r.`ClientId`)
+				JOIN `Asset` a ON (r.`AssetId` = a.`id`)
+				WHERE 
+				c.`SName` LIKE '%$searchString%'
+				OR c.`FName` LIKE '%$searchString%'
+				OR c.`Tel` LIKE '%$searchString%'
+				OR c.`Email` LIKE '%$searchString%'
+				OR a.`Description` LIKE '%$searchString%'
+				OR r.`CheckInDate` LIKE '%$searchString%'
+				OR r.`CheckOutDate` LIKE '%$searchString%'";
+		$result = $this->query($sql);
+		$tBody = "";
+		echo "<br>";
+		while ($row = mysqli_fetch_assoc($result)) {
+			$tBody .= "<tr id=" . $row[id] . ">";
+			$tBody .= "<td>" . $row[SName] . "</td>"
+					. "<td>" . $row[FName] . "</td>"
+					. "<td>" . $row[Tel] . "</td>"
+					. "<td>" . $row[Email] . "</td>"
+					. "<td>" . $row[Description] . "</td>" 
+					. "<td>" . $row[ReservationNumber] . "</td>" 
+					. "<td>" . $row[CheckInDate] . "</td>" 
+					. "<td>" . $row[CheckOutDate]  . "</td>";
+			$tBody .= "</tr>";
+		}
+		echo $tBody;
 	}
 	
 	public function getNextResNo() {
@@ -53,7 +81,7 @@ class classRes extends mysqli {
 		// TODO ===> Check for and prevent double bookings....
 		$this->infoArray = $info;
 		if (!$this->clientExists($info)) {
-			$this->currentId = $this->insertRecord('Client', "4,5,6,7");
+			$this->currentId = $this->insertRecord("Client", "4,5,6,7");
 		}
 		$numNights   = $info[0]->value;
 		$reserveDate = date_create($info[1]->value);
@@ -63,7 +91,7 @@ class classRes extends mysqli {
 		while ($reserveDate <= $endDate) {
 			$dailySQL  = "INSERT INTO `Res` (`AssetId`, `ClientId`, `ReservationNumber`, `ReserveDate`, `CheckInDate`, `CheckOutDate`, `CreateDate`, `CreateUser`) ";
 			$dailySQL .= "VALUES ('" . $info[3]->value . "', '" . $this->currentId . "', '" . $this->getNextResNo() . "', '" . date_format($reserveDate, "Y-m-d") . "', '" . date_format($startDate, "Y-m-d") . "', '" . date_format($endDate, "Y-m-d") . "', '" . substr(TODAY, 0, 10) . "', 'R')";
-			mysqli_execute($dailySQL);
+			mysqli_execute($this->prepare($dailySQL));
 			date_add($reserveDate,date_interval_create_from_date_string("1 days"));
 		}
 	}

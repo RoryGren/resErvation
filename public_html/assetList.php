@@ -19,9 +19,9 @@
 ?>
 <script>
 	$(".assetList div").on('click', function(e) {
-		var assetId = e.target.parentElement.id;
+		var AssetId = e.target.parentElement.id;
 		$(".modal").modal();
 		$("#modal-body").html()
-		$("#assetId").val(assetId);
+		$("#AssetId").val(AssetId);
 	});
 </script>
