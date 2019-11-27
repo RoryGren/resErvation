@@ -12,6 +12,6 @@ Clicking button checks for required field population, confirms existing user, by
 Search assets/rooms, users and reservations by Name, Tel, Email or Room description
 ******
 ### Documentation
-* [Documentataion](https://github.com/RoryGren/reservation/blob/master/Document.pdf) <!--Path to documentation files-->
+* [Documentation](https://github.com/RoryGren/reservation/blob/master/Document.pdf) <!--Path to documentation files-->
 * [Database Diagram](https://github.com/RoryGren/reservation/blob/master/SQL/Database%20Diagram.pdf) <!--Path to documentation files-->
 * [Process flow diagram](https://github.com/RoryGren/reservation/blob/master/Process%20Flow.pdf) <!--Path to documentation files-->
