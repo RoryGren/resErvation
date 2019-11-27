@@ -1,3 +1,4 @@
+<!-- TODO ===> Add, edit new Assets -->
 <!DOCTYPE html>
 <html>
     <head>
@@ -102,6 +103,8 @@
 		<script src="scripts/scripts.js" type="text/javascript"></script>
 		<script>
 //	TODO ===> Prevent start date being earlier than today.
+//	TODO ===> Validation of user input.
+//	TODO ===> Make sure check-out date not before check-in date
 			var d = new Date();
 			var duration;
 			
@@ -111,8 +114,6 @@
 			})
 			
 			$('input.datePicker').change(function(e) {
-				
-				// Todo ===> Make sure check-out date not before check-in date
 				
 				var newStart = new Date($("#startDate").val());
 				var newEnd   = new Date($("#endDate").val());
