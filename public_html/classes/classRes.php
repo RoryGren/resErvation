@@ -5,16 +5,16 @@
  * @author rory
  * 
  * $info: ( 
- * [0] => stdClass Object ( [id] => numDays  [value] => ) 
- * [1] => stdClass Object ( [id] => startDay [value] => ) 
- * [2] => stdClass Object ( [id] => endDay   [value] => ) 
- * [3] => stdClass Object ( [id] => AssetId  [value] => ) 
- * [4] => stdClass Object ( [id] => Tel      [value] => ) 
- * [5] => stdClass Object ( [id] => FName    [value] => ) 
- * [6] => stdClass Object ( [id] => SName    [value] => ) 
- * [7] => stdClass Object ( [id] => email    [value] => ))
- * 
- * reservations stored nightly - each night has own record with common Reservation Number
+ * [0] => stdClass Object ( [id] => numDays  [value] => ) <br>
+ * [1] => stdClass Object ( [id] => startDay [value] => ) <br>
+ * [2] => stdClass Object ( [id] => endDay   [value] => ) <br>
+ * [3] => stdClass Object ( [id] => AssetId  [value] => ) <br>
+ * [4] => stdClass Object ( [id] => Tel      [value] => ) <br>
+ * [5] => stdClass Object ( [id] => FName    [value] => ) <br>
+ * [6] => stdClass Object ( [id] => SName    [value] => ) <br>
+ * [7] => stdClass Object ( [id] => email    [value] => ))<br>
+ * <br>
+ * reservations stored nightly - each night has own record with common Reservation Number<br>
  * 
  */
 class classRes extends mysqli {
