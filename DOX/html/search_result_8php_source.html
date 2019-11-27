@@ -5,17 +5,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ResErvation: /Users/rory/Sites/ResErvation/public_html/searchResult.php Source File</title>
+<title>resErvation: /Users/rory/Sites/ResErvation/public_html/searchResult.php Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript">
-  $(document).ready(initResizable);
-</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -28,10 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ResErvation
-   &#160;<span id="projectnumber">1</span>
+   <div id="projectname">resErvation
    </div>
-   <div id="projectbrief">Basic Room Reservation System</div>
+   <div id="projectbrief">Baasic Room Reservation System</div>
   </td>
  </tr>
  </tbody>
@@ -51,21 +43,6 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-$(document).ready(function(){initNavTree('search_result_8php_source.html','');});
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -80,24 +57,26 @@ $(document).ready(function(){initNavTree('search_result_8php_source.html','');})
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_46f7f6a2dc4bdceb9ba28beb1cd7588f.html">public_html</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">searchResult.php</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="search_result_8php.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;&lt;?php</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// ===== search Results =====</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    include_once <span class="stringliteral">&#39;config.php&#39;</span>;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    include_once <span class="stringliteral">&#39;classes/classRes.php&#39;</span>;</div><div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="search_result_8php.html#a7ea23af4fab2d3e0a69ede97794ce391">    6</a></span>&#160;    <a class="code" href="search_result_8php.html#a7ea23af4fab2d3e0a69ede97794ce391">$searchString</a> = filter_input(INPUT_GET, <span class="stringliteral">&#39;searchString&#39;</span>);</div><div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="search_result_8php.html#a1646d1b5d10f701de3a7c119f7fe1013">    7</a></span>&#160;    <a class="code" href="search_result_8php.html#a1646d1b5d10f701de3a7c119f7fe1013">$Res</a> = <span class="keyword">new</span> classRes();</div><div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="search_result_8php.html#a112ef069ddc0454086e3d1e6d8d55d07">    8</a></span>&#160;    <a class="code" href="search_result_8php.html#a112ef069ddc0454086e3d1e6d8d55d07">$result</a> = <a class="code" href="search_result_8php.html#a1646d1b5d10f701de3a7c119f7fe1013">$Res</a>-&gt;findRes(<a class="code" href="search_result_8php.html#a7ea23af4fab2d3e0a69ede97794ce391">$searchString</a>);</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;?&gt;</div><div class="ttc" id="search_result_8php_html_a112ef069ddc0454086e3d1e6d8d55d07"><div class="ttname"><a href="search_result_8php.html#a112ef069ddc0454086e3d1e6d8d55d07">$result</a></div><div class="ttdeci">$result</div><div class="ttdef"><b>Definition:</b> <a href="search_result_8php_source.html#l00008">searchResult.php:8</a></div></div>
+<a href="search_result_8php.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;&lt;?php</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// ===== search Results =====</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    include_once <span class="stringliteral">&#39;config.php&#39;</span>;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    include_once <span class="stringliteral">&#39;classes/classRes.php&#39;</span>;</div><div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="search_result_8php.html#a7ea23af4fab2d3e0a69ede97794ce391">    6</a></span>&#160;    <a class="code" href="search_result_8php.html#a7ea23af4fab2d3e0a69ede97794ce391">$searchString</a> = filter_input(INPUT_GET, <span class="stringliteral">&#39;searchString&#39;</span>);</div><div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="search_result_8php.html#a1646d1b5d10f701de3a7c119f7fe1013">    7</a></span>&#160;    <a class="code" href="search_result_8php.html#a1646d1b5d10f701de3a7c119f7fe1013">$Res</a> = <span class="keyword">new</span> <a class="code" href="classclass_res.html">classRes</a>();</div><div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="search_result_8php.html#a112ef069ddc0454086e3d1e6d8d55d07">    8</a></span>&#160;    <a class="code" href="search_result_8php.html#a112ef069ddc0454086e3d1e6d8d55d07">$result</a> = <a class="code" href="search_result_8php.html#a1646d1b5d10f701de3a7c119f7fe1013">$Res</a>-&gt;findRes(<a class="code" href="search_result_8php.html#a7ea23af4fab2d3e0a69ede97794ce391">$searchString</a>);</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;?&gt;</div><div class="ttc" id="search_result_8php_html_a112ef069ddc0454086e3d1e6d8d55d07"><div class="ttname"><a href="search_result_8php.html#a112ef069ddc0454086e3d1e6d8d55d07">$result</a></div><div class="ttdeci">$result</div><div class="ttdef"><b>Definition:</b> <a href="search_result_8php_source.html#l00008">searchResult.php:8</a></div></div>
+<div class="ttc" id="classclass_res_html"><div class="ttname"><a href="classclass_res.html">classRes</a></div><div class="ttdef"><b>Definition:</b> <a href="class_res_8php_source.html#l00020">classRes.php:20</a></div></div>
 <div class="ttc" id="search_result_8php_html_a7ea23af4fab2d3e0a69ede97794ce391"><div class="ttname"><a href="search_result_8php.html#a7ea23af4fab2d3e0a69ede97794ce391">$searchString</a></div><div class="ttdeci">$searchString</div><div class="ttdef"><b>Definition:</b> <a href="search_result_8php_source.html#l00006">searchResult.php:6</a></div></div>
 <div class="ttc" id="search_result_8php_html_a1646d1b5d10f701de3a7c119f7fe1013"><div class="ttname"><a href="search_result_8php.html#a1646d1b5d10f701de3a7c119f7fe1013">$Res</a></div><div class="ttdeci">$Res</div><div class="ttdef"><b>Definition:</b> <a href="search_result_8php_source.html#l00007">searchResult.php:7</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="navelem"><a class="el" href="dir_46f7f6a2dc4bdceb9ba28beb1cd7588f.html">public_html</a></li><li class="navelem"><a class="el" href="search_result_8php.html">searchResult.php</a></li>
-    <li class="footer">Generated by
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
 </body>
 </html>

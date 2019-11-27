@@ -16,21 +16,21 @@
 					
 					<form class="form-horizontal" id="frmRes">
 						<div class="form-group row">
-							<div class="col-sm-3">
+							<div class="col-sm-12">
 								<label for='startDate' class='control-label'>Check-in Date</label>
 								<input type="date" class="form-control datePicker" id="startDate" placeholder="Enter Reservation Start Date">
 							</div>
-							<div class="col-sm-3">
+							<div class="col-sm-12">
 								<label for='endDate' class='control-label'>Check-out Date</label>
 								<input type="date" class="form-control datePicker" id="endDate">
 							</div>
-							<div class="col-sm-3">
+							<div class="col-sm-12">
 								<label for='duration' class='control-label'>Nights</label>
 								<input type="text" class="form-control" id="duration" placeholder="0">
 							</div>
 						</div>
 						<div class="form-group row">
-							<div class="col-sm-3">
+							<div class="col-sm-12">
 								<label for='pax' class='control-label'>Number of People</label>
 								<input type="number" class="form-control" id="pax" value="2" min="1" max="6">
 							</div>
@@ -68,19 +68,19 @@
 							</div>
 							<div class="form-group row">
 								<span>To finalise, please enter your contact information:</span><br>
-								<div class="col-sm-6">
+								<div class="col-sm-12">
 									<label for='Tel' class='control-label'>Telephone</label>
 									<input type="number" class="form-control" id="Tel" placeholder="Telephone" required>
 								</div>
-								<div class="col-sm-6">
+								<div class="col-sm-12">
 									<label for='FName' class='control-label'>Name</label>
 									<input type="text" class="form-control" id="FName" placeholder="First / Given Name" required>
 								</div>
-								<div class="col-sm-6">
+								<div class="col-sm-12">
 									<label for='SName' class='control-label'>Surname</label>
 									<input type="text" class="form-control" id="SName" placeholder="Surname / Family Name" required>
 								</div>
-								<div class="col-sm-6">
+								<div class="col-sm-12">
 									<label for='email' class='control-label'>Email</label>
 									<input type="email" class="form-control" id="email" placeholder="xxx@yyyy.com" required>
 								</div>
