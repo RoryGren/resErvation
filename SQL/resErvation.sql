@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.18)
 # Database: resErvation
-# Generation Time: 2019-11-26 21:14:37 +0000
+# Generation Time: 2019-11-27 08:12:26 +0000
 # ************************************************************
 
 
@@ -177,7 +177,7 @@ CREATE TABLE `Client` (
   KEY `dxName` (`SName`),
   KEY `dxFName` (`FName`),
   KEY `dxClientTel` (`Tel`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `Client` WRITE;
 /*!40000 ALTER TABLE `Client` DISABLE KEYS */;
@@ -186,7 +186,9 @@ INSERT INTO `Client` (`id`, `SName`, `FName`, `Tel`, `Email`, `CreateDate`, `Cre
 VALUES
 	(1,'Smith','Josephine','+2712345678','jo@smith.co.za','2019-11-21','R',NULL,NULL),
 	(2,'Smith','Harry','+2712312312','harry@smith.co.za','2019-11-21','R',NULL,NULL),
-	(3,'Bloggs','Fred','08212345678','fred@bloggs.com','2019-11-26','R',NULL,NULL);
+	(3,'Bloggs','Fred','08212345678','fred@bloggs.com','2019-11-26','R',NULL,NULL),
+	(4,'Soap','Joe','123412341234','joe@soap.com','2019-11-26','R',NULL,NULL),
+	(5,'Bloggs','Fred','1234123412','fred@bloggs.com','2019-11-26','R',NULL,NULL);
 
 /*!40000 ALTER TABLE `Client` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -217,7 +219,7 @@ CREATE TABLE `Res` (
   KEY `dxResNo` (`ReservationNumber`),
   CONSTRAINT `fkAsset` FOREIGN KEY (`AssetId`) REFERENCES `Asset` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fkResClient` FOREIGN KEY (`ClientId`) REFERENCES `Client` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `Res` WRITE;
 /*!40000 ALTER TABLE `Res` DISABLE KEYS */;
@@ -234,7 +236,9 @@ VALUES
 	(8,3,3,47,'2019-11-26','2019-11-29','2019-11-26',NULL,'2019-11-26','R',NULL,NULL),
 	(9,3,3,47,'2019-11-26','2019-11-29','2019-11-27',NULL,'2019-11-26','R',NULL,NULL),
 	(10,3,3,47,'2019-11-26','2019-11-29','2019-11-28',NULL,'2019-11-26','R',NULL,NULL),
-	(11,3,3,47,'2019-11-26','2019-11-29','2019-11-29',NULL,'2019-11-26','R',NULL,NULL);
+	(11,3,3,47,'2019-11-26','2019-11-29','2019-11-29',NULL,'2019-11-26','R',NULL,NULL),
+	(12,2,5,48,'2019-11-26','2019-11-27','2019-11-26',NULL,'2019-11-26','R',NULL,NULL),
+	(13,2,5,49,'2019-11-26','2019-11-27','2019-11-27',NULL,'2019-11-26','R',NULL,NULL);
 
 /*!40000 ALTER TABLE `Res` ENABLE KEYS */;
 UNLOCK TABLES;
