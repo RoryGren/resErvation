@@ -1,6 +1,6 @@
 ## Room reservation system
 
-###Reserve a Room
+### Reserve a Room
 
 User can specify a range of dates - check-in and check-out, number of people for the booking. A clickable list of rooms is displayed for selection, containing with basic details.
 When room selected, modal popup allows the user to fill in name and contact details and then confirm or cancel booking details.
