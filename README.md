@@ -7,15 +7,17 @@ Files & Folders
 ---------------------------------------------
 Index.php
 
-User can specify a range of dates, number of people and a list of rooms is displayed.
-When room selected, modal popup allows the user to fill in Name and contact details and confirm booking details.
-Clicking button checks for field population, confirms existing user, by name and telephone number, or creates new record and writes reservation to database.
+User can specify a range of dates - check-in and check-out, number of people for the booking. A clickable list of rooms is displayed for selection, containing with basic details.
+When room selected, modal popup allows the user to fill in name and contact details and then confirm or cancel booking details.
+Clicking button checks for required field population, confirms existing user, by name and telephone number, or creates new record and writes reservation to database.
+Anchor link to search page.
 
-TODO: 
-1. Does not check for double bookings
-2. Does not check that dates are only in the future.
+TODO:  (Other than prettying.)
+1. Check for & prevent double bookings.
+2. Check that dates are only in the future.
 3. Only does insert and select. No update or delete.
 4. Field display order needs to be corrected. (Array indexes were used for ajax data transfer to PHP. Should be changed to use input field id.)
+5. Proper field validation.
 
 ---------------------------------------------
 
@@ -25,6 +27,7 @@ Basic search function
 User can search assets/rooms, users and reservations
 input field id="searchString" uses ajax to query database and populate table with search results
 Searches on Name, Tel, Email or Room description
+Anchor link to reservation page.
 
 TODO: 
 1. Add editing of records - clients, rooms, etc. 
@@ -37,17 +40,17 @@ Holds classRes with methods and properties called
 
 ---------------------------------------------
 
-scripts folder 
-Contains jQuery, Bootstrap.js and custom Javascript / jQuery script files
+scripts/ folder 
+Contains jQuery, Bootstrap and custom Javascript / jQuery files
 
 ---------------------------------------------
 
-style folder
+style/ folder
 Contains custom css and Bootstrap stylesheets
 
 ---------------------------------------------
 
-SQL folder
+SQL/ folder
 Contains scripts to create database tables.
 
 ---------------------------------------------
